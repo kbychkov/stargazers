@@ -1,0 +1,44 @@
+extends layout
+
+block styles
+  link(rel='stylesheet', href='https://unpkg.com/chartist/dist/chartist.min.css')
+
+block scripts
+  script(src='https://unpkg.com/chartist/dist/chartist.min.js')
+  script(src='https://unpkg.com/axios/dist/axios.min.js')
+  script.
+    (() => {
+      axios.get('#{url}').then(response => {
+        let accumulator = 0;
+        let buffer = [];
+
+        for (let prop in response.data) {
+          accumulator += response.data[prop];
+          buffer.push({
+            x: new Date(prop),
+            y: accumulator
+          })
+        }
+
+        new Chartist.Line('.ct-chart', {
+          series: [{
+            data: buffer
+          }]
+        }, {
+          axisX: {
+            type: Chartist.FixedScaleAxis
+          },
+          axisY: {
+            onlyInteger: true
+          },
+          fullWidth: true,
+          lineSmooth: Chartist.Interpolation.step(),
+          low: 0,
+          showArea: true,
+          showPoint: false
+        });
+      });
+    })();
+
+block content
+  .ct-chart.ct-octave

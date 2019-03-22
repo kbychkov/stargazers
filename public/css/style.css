@@ -1,0 +1,12 @@
+body {
+  padding: 32px;
+  color: rgba(0,0,0,0.87);
+  font: 18px "Signika", sans-serif;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.home {
+  text-align: center;
+}
