@@ -6,6 +6,7 @@ block styles
 block scripts
   script(src='https://unpkg.com/chartist/dist/chartist.min.js')
   script(src='https://unpkg.com/axios/dist/axios.min.js')
+  script(src='https://unpkg.com/dayjs/dayjs.min.js')
   script.
     (() => {
       axios.get('#{url}').then(response => {
@@ -26,7 +27,11 @@ block scripts
           }]
         }, {
           axisX: {
-            type: Chartist.FixedScaleAxis
+            type: Chartist.FixedScaleAxis,
+            divisor: 5,
+            labelInterpolationFnc: value => {
+              return dayjs(value).format('MMM YYYY');
+            }
           },
           axisY: {
             onlyInteger: true
@@ -41,4 +46,5 @@ block scripts
     })();
 
 block content
+  h1.chart-title The stargazers chart for #[a(href=`https://github.com/${owner}/${repo}`) #{owner}/#{repo}]
   .ct-chart.ct-octave

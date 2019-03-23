@@ -9,6 +9,8 @@ router.get('/', (req, res, next) => {
 
 router.get('/:owner/:repo', (req, res, next) => {
   res.render('stargazers', {
+    owner: req.params.owner,
+    repo: req.params.repo,
     url: `${req.path}/stargazers`
   });
 });
