@@ -8,8 +8,8 @@ block scripts
   script(src='https://unpkg.com/axios/dist/axios.min.js')
   script(src='https://unpkg.com/dayjs/dayjs.min.js')
   script.
-    (() => {
-      axios.get('#{url}').then(response => {
+    (url => {
+      axios.get(url).then(response => {
         let accumulator = 0;
         let buffer = [];
 
@@ -43,7 +43,7 @@ block scripts
           showPoint: false
         });
       });
-    })();
+    })('#{url}');
 
 block content
   h1.chart-title The stargazers chart for #[a(href=`https://github.com/${owner}/${repo}`) #{owner}/#{repo}]
