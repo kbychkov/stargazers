@@ -9,6 +9,19 @@ block scripts
   script(src='https://unpkg.com/dayjs/dayjs.min.js')
   script.
     (url => {
+      const loading = (() => {
+        const el = document.querySelector('.loading');
+        const elText = el.querySelector('div');
+
+        return {
+          show: () => el.style.display = 'flex',
+          hide: () => el.style.display = 'none',
+          text: text => elText.innerText = text
+        }
+      })();
+
+      loading.text('Loading data...');
+
       axios.get(url).then(response => {
         let accumulator = 0;
         let buffer = [];
@@ -20,6 +33,8 @@ block scripts
             y: accumulator
           })
         }
+
+        loading.hide();
 
         new Chartist.Line('.ct-chart', {
           series: [{
@@ -42,9 +57,13 @@ block scripts
           showArea: true,
           showPoint: false
         });
+      }).catch(error => {
+        loading.text(error);
       });
     })('#{url}');
 
 block content
   h1.chart-title The stargazers chart for #[a(href=`https://github.com/${owner}/${repo}`) #{owner}/#{repo}]
   .ct-chart.ct-octave
+    .loading
+      div
