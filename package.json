@@ -1,6 +1,6 @@
 {
   "name": "stargazers",
-  "description": "Plot the chart of stargazers for a GitHub repo",
+  "description": "The stargazers chart for a GitHub repo",
   "version": "0.0.0",
   "keywords": [
     "github",
@@ -8,6 +8,12 @@
     "star",
     "stargazers"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kbychkov/stargazers.git"
+  },
+  "author": "Konstantin Bychkov <k.bychkov@yandex.ru>",
+  "license": "MIT",
   "scripts": {
     "start": "node ./bin/www"
   },
