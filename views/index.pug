@@ -7,7 +7,7 @@ block scripts
       const url = form.querySelector('input');
 
       form.addEventListener('submit', event => {
-        const result = url.value.match(/(?:github\.com[/:])?(\w+)\/(\w+)/i);
+        const result = url.value.match(/(?:github\.com[/])?([\w-]+)\/([\w\.-]+)/i);
         if (result && result.length === 3) {
           window.location = `/${result[1]}/${result[2]}`;
         }
