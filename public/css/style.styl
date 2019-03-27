@@ -2,8 +2,11 @@ html
   font 18px "Signika", sans-serif
 
 body
-  padding 64px
+  padding 16px
   color #333
+
+  @media screen and (min-width: 768px)
+    padding 64px
 
 a
   color #666
@@ -14,9 +17,12 @@ a
 
 .logo
   margin-bottom 64px
-  font-size 2.5rem
+  font-size 2rem
   font-weight 700
   text-align center
+
+  @media screen and (min-width: 360px)
+    font-size 2.5rem
 
   a
     color inherit
