@@ -30,6 +30,6 @@
     "https-proxy-agent": "^2.2.1",
     "morgan": "^1.9.0",
     "pug": "^2.0.3",
-    "stylus": "^0.54.5"
+    "stylus": "^0.54.6"
   }
 }
